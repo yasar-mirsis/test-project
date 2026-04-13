@@ -1,7 +1,11 @@
 /**
  * Task status enumeration
  */
-export type TaskStatus = "pending" | "in-progress" | "done";
+export enum TaskStatus {
+  PENDING = "pending",
+  IN_PROGRESS = "in-progress",
+  DONE = "done",
+}
 
 /**
  * Task entity interface
@@ -10,10 +14,10 @@ export interface Task {
   id: number;
   title: string;
   description: string | null;
-  dueDate: string | null;
+  dueDate: Date | null;
   status: TaskStatus;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 /**
@@ -22,7 +26,7 @@ export interface Task {
 export interface CreateTaskDto {
   title: string;
   description?: string | null;
-  dueDate?: string | null;
+  dueDate?: Date | null;
   status?: TaskStatus;
 }
 
@@ -32,6 +36,6 @@ export interface CreateTaskDto {
 export interface UpdateTaskDto {
   title?: string;
   description?: string | null;
-  dueDate?: string | null;
+  dueDate?: Date | null;
   status?: TaskStatus;
 }
